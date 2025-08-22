@@ -29,7 +29,8 @@ class AdminProductController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'short_description' => 'required|string|max:500',
             'long_description' => 'required|string',
-            'is_active' => 'boolean'
+            'is_active' => 'boolean',
+            'sort_order' => 'nullable',
         ]);
 
         if ($request->hasFile('image')) {
@@ -38,6 +39,7 @@ class AdminProductController extends Controller
             $validated['image'] = 'products/' . $filename;
         }
 
+        $validated['sequence'] = $request->input('sort_order');
         Product::create($validated);
 
         return redirect()->route('admin.products.index')
@@ -63,7 +65,8 @@ class AdminProductController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'short_description' => 'required|string|max:500',
             'long_description' => 'required|string',
-            'is_active' => 'boolean'
+            'is_active' => 'boolean',
+            'sort_order' => 'nullable',
         ]);
 
         if ($request->hasFile('image')) {
@@ -76,6 +79,8 @@ class AdminProductController extends Controller
             $request->file('image')->storeAs('products', $filename);
             $validated['image'] = 'products/' . $filename;
         }
+
+        $validated['sequence'] = $request->input('sort_order');
 
         $product->update($validated);
 
