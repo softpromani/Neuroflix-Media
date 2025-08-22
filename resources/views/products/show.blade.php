@@ -64,7 +64,7 @@
                     <p class="text-xl text-gray-600 mb-8">{{ $product->short_description }}</p>
 
                     <div class="mb-8">
-                        <a href="https://wa.me/+919648041515?text={{ $product->whatsapp_message }}"
+                        <a href="https://wa.me/+919807371859?text={{ $product->whatsapp_message }}"
                            target="_blank"
                            class="w-full bg-neuro-gold text-white px-8 py-4 rounded-xl text-xl font-bold text-center block hover:bg-neuro-orange transition duration-300">
                             🛒 Buy Now via WhatsApp
